@@ -1,0 +1,12 @@
+#content.episodeListPage
+  == slim :"includes/_episode-list", :locals => { :episodes => @published_episodes, :mode => "short", :list_status => "published", :display_list_label => @display_published_label }
+  - if @paginated
+    #pagination-links
+      - if @page_num < @page_max
+        a.pagination-linkOlder href="/page/#{ @page_num + 1 }"
+          |  <i class="icon-long-arrow-left"></i> #{ t 'older_episodes' }
+
+      - if @page_num > 1 && @page_num <= @page_max
+        a.pagination-linkNewer href="/page/#{ @page_num - 1 }"
+          |  #{ t 'newer_episodes' } <i class="icon-long-arrow-right"></i>
+

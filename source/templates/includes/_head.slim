@@ -1,0 +1,8 @@
+head
+  - if title != ""
+      title #{title} - #{ settings.title }
+  - else
+      title #{ settings.title }
+  / the ?l=x is the most stupid hack I have ever seen, but it's the most reliable way to force mobile safari to quit caching the css
+  link rel="stylesheet" href="/css/style.css?l=#{ rand(80840) }"
+  meta content="width=device-width,initial-scale=1"  name="viewport"

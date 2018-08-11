@@ -1,0 +1,21 @@
+#content
+  .fullEpisode
+    == slim :"includes/_episode-header", :locals => { :episode => @episode }
+
+    .fullEpisode-teaser.text-content
+      == render_content(@episode.teaser, heading_start_level: 3)
+
+    .fullEpisode-secondary
+      h3
+        | #{ t 'listen' }
+      ul.fullEpisode-downloadLinks
+        - @episode.audioformats.each do |audioformat|
+          li: a.fullEpisode-downloadLink href="#{audio_url(@episode.name,audioformat)}" title="Download #{ @episode.show.title }: #{ @episode.title } in #{ audioformat.name }"
+            | #{audioformat.name}
+
+    .clear
+
+    h2.sectionHeading
+      | #{ t 'shownotes' }
+    .shownotes.text-content
+      == render_content(@episode.content, heading_start_level: 3)

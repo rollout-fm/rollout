@@ -1,0 +1,16 @@
+- if mode == "archive"
+  section class=["episodeListArchive","episodeList"]
+    - if locals.has_key?( :list_label )
+      h3.episodeListArchive-heading #{ list_label }
+
+    - for episode in episodes
+      == slim :"includes/_episode", :locals => { :episode => episode, :mode => "archive" }
+
+- elsif mode == "short"
+  section class=["episodeListShort","episodeList"]
+    - if locals.has_key?( :list_label )
+      h3.episodeListShort-heading
+        span.episodeListShort-heading-text #{ list_label }
+
+    - for episode in episodes
+      == slim :"includes/_episode", :locals => { :episode => episode, :mode => "short" }

@@ -1,0 +1,56 @@
+/*
+	podding - base stylesheet
+	by Marcel Langer
+	Thanks to:
+		- Necolas for http://necolas.github.com/normalize.css/
+		- Font Awesome
+		- [Shawn Wernig]( http://stackoverflow.com/users/1388638/shawn-wernig ) for the basics of the popovers
+*/
+
+@import "normalize"; // Import the normaliz0r!1
+
+
+// Time to define some type
+
+@displayFonts: "GothamBold", "Helvetica Neue", Helvetica, Arial, sans-serif; // headings, titles
+@supportFonts: "GothamBook", "Helvetica Neue", Helvetica, Arial, sans-serif; // download links, meta info, buttons
+@textFonts: "Mercury Text G1", Georgia, serif; // shownotes, descriptions, long-form text
+@base-size: 18px; // size of body text, everything in the layout scales according to this
+@line: 1.5*@base-size; // default line height and used for vertical spacing everywhere
+
+// Time to define some colors
+
+@highlight: #F02311; // main colour for links etc.
+@highlight2: #F86005; // colour it fades to, also for other highlighting
+@highlight-less: desaturate(@highlight, 20%); // for less emphasized things
+@text: #333; // for body text and anything else that needs to be readable
+@text-less: #555; // for less emphasized text
+@text-even-less: #999; //for even less emphasized text
+@sub: #aaa; // for subtle borders etc.
+@bg: #fefefe; // background colour
+@bg-less: #efefef; // slightly brighter bg colour for zebra striping tables etc
+@bg2: #333; // a contrast background colour for buttons etc.
+@bg2-less: #555;
+
+// Time to define some nice breakpoints
+
+@break1: 899px; // only slight tweaks to layout
+@break2: 689px; // change layout more substantially to fit on screen
+@break3: 479px; // fiddle even more because now we are extremely small
+@break4: 429px; // fuuuck now we're an iphone in portrait
+
+// Import custom definitions
+
+// Uncomment the next line for custom styling
+// @import "custom";
+
+// Time to import the important bits
+
+@import "icons"; // for icons
+@import "mixins"; // Mixins like .bordered or something
+@import "objects"; // Import generic objects that can be extended where needed (popovers, cards etc.)
+@import "layout"; // basic layout
+@import "basics"; // basic styling
+@import "main"; // styles that are needed pretty much everywhere
+@import "pages"; // styles for specific pages
+@import "custom"; // for custom styling

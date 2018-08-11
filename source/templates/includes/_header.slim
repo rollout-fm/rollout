@@ -1,0 +1,45 @@
+header.instapaper_ignore
+  h1#site-title: a href="/"
+    |#{ settings.title }
+  p#tagline
+  nav#mainNav
+    ul#mainNav-navList
+      - for page in Page.all do
+        - unless page.is_unimportant || page.is_hidden
+          - unless page.is_secondary
+            li.mainNav-navItem: a.mainNav-navLink href="#{ url_for(page) }"
+              - if page.icon
+                i class="icon-#{ page.icon } hide-at-break2"
+              - if page.short_title
+                span.show-at-break1 #{ page.short_title  }
+                span.hide-at-break1 #{ page.title }
+              - else
+                span #{ page.title }
+          - else
+            li.mainNav-navItem.hide-at-break2: a.mainNav-navLink href="#{ url_for(page) }"
+              - if page.icon
+                i class="icon-#{ page.icon } hide-at-break2"
+              - if page.short_title
+                span.show-at-break1 #{ page.short_title  }
+                span.hide-at-break1 #{ page.title }
+              - else
+                span #{ page.title }
+
+            
+      
+      li.mainNav-navItem.popover-menu.hide-at-break3 
+        a.mainNav-navLink href="/hosts"
+          | <i class="icon-group hide-at-break2"></i><span>Hosts</span>
+        ul.popover-content
+          - all_hosts.each do |host|
+            - unless host.guest
+              li: a.inlineIcon href="#{ url_for(host) }" 
+                |  #{ host.full_name }
+
+      li.mainNav-navItem.popover-menu.hide-at-break4
+        a.mainNav-navLink href="/shows"
+          | <i class="icon-star-empty hide-at-break2"></i><span>Shows</span>
+        ul.popover-content
+          - for show in all_shows do
+            li: a.inlineIcon href="#{ url_for(show) }" 
+              |  #{ show.title }

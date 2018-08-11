@@ -1,0 +1,6 @@
+.episode-player 
+  <audio preload="none" controls>
+    - for audio_format in episode.audioformats.keys do
+      source href="#{episode.audioformats[audio_format]}" type="audio/#{audio_format}"
+  </audio>
+

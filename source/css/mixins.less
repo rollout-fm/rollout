@@ -1,0 +1,259 @@
+/*  
+  Snippets Stylesheet for reusable stylings
+*/
+
+/* Often used classes that are just plain useful */
+
+  .clear {
+    width: 100%;
+    clear: both;
+  }
+
+  .spacer {
+    margin: 0 0.3em 0 0.3em;
+    font-style: italic;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  .starkBoxShadow(@colour: @text) {
+    -moz-box-shadow:4px 4px 0 @colour;
+    -webkit-box-shadow:4px 4px 0 @colour;
+    box-shadow:4px 4px 0 @colour;
+  }
+
+  .noBoxShadow {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .starkTextShadow(@colour: @text-less) {
+    -moz-text-shadow:4px 4px 0 @colour;
+    -webkit-text-shadow:4px 4px 0 @colour;
+    text-shadow:4px 4px 0 @colour;
+  }
+
+  .candy-trans { // nice subtle fade for ALL THE THINGS
+    -webkit-transition: color 0.5s ease, border-color 0.5s ease, background 0.5s ease;
+    -moz-transition: color 0.5s ease, border-color 0.5s ease, background 0.5s ease;
+    transition: color 0.5s ease, border-color 0.5s ease, background 0.5s ease;
+
+  }
+
+  .bordered {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  }
+
+
+  .hide-link-less { // use this for links that don't need extra color
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      color: @highlight2;
+      border-bottom: 1px solid @sub;
+      .candy-trans;
+    }
+  }
+
+  .hide-link { // use this for the ones that can't even have a border
+    border: none; // importing the mixin *after* preserves the border on hover
+    .hide-link-less;
+  }
+
+  .hide-link-hardcore { // and this if you're slightly ashamed they even exist
+    .hide-link;
+    border: none !important;
+  }
+
+
+/* Utility classes for punctuation & titles */
+
+  .em-dashed { // Add a space, an em-dash, another space before
+      &:before{content: " \2014\2002 ";} // black unicode magic that annoys me deeply
+    }
+
+  .with-colon { // this as well
+    &:after{ content: ": "}
+  }
+
+/* Hide Things on certain breakpoints */
+
+  .hidden {
+    visibility: hidden;
+    height: 0;
+    width: 0 !important;
+    display: none !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  // hide is: hide if width < break
+  // show is: hide if width > break
+
+  .hide-breakpoint(@break: @break2) {
+    @media all and (max-width: @break)   {
+     .hidden;
+    }
+  }
+
+  .show-breakpoint(@break: @break2) {
+    @media all and (min-width: @break)   {
+     .hidden;
+    }
+  }
+
+  // those are for use in the templates directly
+
+  .hide-at-break1 {
+    .hide-breakpoint( @break1 );
+  }
+
+  .hide-at-break2 {
+    .hide-breakpoint( @break2 );
+  }
+
+  .hide-at-break3 {
+    .hide-breakpoint( @break3 );
+  }
+
+  .hide-at-break4 {
+    .hide-breakpoint( @break4 );
+  }
+
+  .show-at-break1 { // show if width > break 1
+    .show-breakpoint( @break1 );
+  }
+
+  .show-at-break2 {
+    .show-breakpoint( @break2 );
+  }
+
+  .show-at-break3 {
+    .show-breakpoint( @break3 );
+  }
+
+  .show-at-break4 {
+    .show-breakpoint( @break4 );
+  }
+
+/* Style inline lists and add delimeters */
+
+  .inline-list { // Generic styling for lists that are displayed inline (like navigation, episode tags etc.)
+    list-style: none;
+    li {
+      display: inline;
+    }
+  }
+
+  .itemized { // make inline lists look like this: Herp, Derp & Durr
+    margin: 0;
+
+    &:after {
+      content: ", "
+    }
+
+    &:nth-last-child(2) { 
+      &:after { 
+        content:"";
+      }
+    }
+    &:last-child {
+      &:before { 
+        content: " & "; 
+      }
+      &:after { 
+        content: ""; 
+      }
+    }
+  }
+
+  .hide-spacers(@text-color: @text; @bg-color: @bg) {
+    &:before, &:after { // style & and , as text, not as link (which it is technically part of)
+      color: @text-color;
+      border-bottom: 1px solid @bg-color;
+    }
+  }
+
+  .dotted { // add mid-dots between elements (nav, episode headings)
+  
+    &:after {
+      margin: 0 0.35em;
+      content: "∙"; // add a mid dot after items
+      font-family: @displayFonts;
+      font-weight: bold;
+    }
+
+    &:last-child {
+      &:after {
+        content: "";
+      }
+    }
+  }
+
+  .single { // we need this because Safari doesn't support :only-child *rolleyes*
+    &:before { content: "" !important; }
+    &:after { content: "" !important; }
+  }
+
+
+/* Link Styles */
+
+.basicLink { // basic color styling for links (often with icons)
+    color: inherit;
+    text-decoration: none;
+    border: none;
+    &:hover {
+      color: @highlight;
+      .candy-trans;
+    }
+  }
+
+  .basicLink-alt { // an alternative styling for links on coloured bg (like buttons)
+    .basicLink;
+    &:hover {
+      color: @text;
+    }
+  }
+
+
+/* Icon Styles (these are applied to the parent element of the icon) */
+  
+  .spaced { // used for keeping a certain distance between icon and corresponding text
+    i {
+      margin-right: 0.25em;
+    }
+  }
+
+  .sized { // needed for sizing the icons on different screen sizes (causes weird problems when nested too hard)
+    i {
+      font-size: 1.3em;
+    }
+    @media all and (max-width: @break3)   {
+      i {
+        font-size: 1.1em;
+      }
+    }
+  }
+
+  .inlineIcon { // for icons that are used with text behind them (size slightly larger than text)
+    .spaced;
+    .sized;
+    i {
+      vertical-align: middle;
+    }
+
+  }
+
+  .textLink { // for links with icons that are used in areas that also contain text
+    .inlineIcon;
+    .basicLink;
+    float: right;
+    color: @text-less;
+    border: none;
+  }
+
+

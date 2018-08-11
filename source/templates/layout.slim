@@ -1,0 +1,13 @@
+doctype html
+html
+
+  == slim :"includes/_head", :locals => { :title => @pagetitle || '' }
+
+  body
+    #wrapper
+      == slim :"includes/_header"
+      == yield
+
+      .clear
+      == slim :"includes/_secondary"
+

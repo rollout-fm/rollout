@@ -1,0 +1,13 @@
+#content.page-single.page.page-crew
+  == slim :"includes/_page-title", :locals => { :page => @page }
+
+  - @hosts.each do |host|
+    - unless host.guest
+      == slim :"includes/_host", :locals => { :host => host, :mode => "short" }
+
+  h2.sectionHeading
+    | #{ t 'guests' }
+
+  - @hosts.each do |host|
+    - if host.guest
+      == slim :"includes/_host", :locals => { :host => host, :mode => "short" }

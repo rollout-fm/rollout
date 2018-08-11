@@ -1,0 +1,43 @@
+#secondary
+  form#search action="" method="get"
+    fieldset role="search"
+      input type="hidden" name="query" value=""
+      i.icon-search.input-icon
+      input class="search" type="text" name="q" results="0" placeholder="#{ t 'search' }…"
+        
+  .secondary-nav
+    
+    ul.secondary-navList
+      - for page in Page.all do
+        - unless page.is_hidden
+          li.secondary-navItem: a.secondary-navLink href="#{ url_for(page) }"
+            - if page.icon
+              i class="icon-#{ page.icon }"
+            - if page.short_title
+              span.show-at-break1 #{ page.short_title  }
+              span.hide-at-break1 #{ page.title }
+            - else
+              span #{ page.title }
+
+    ul.secondary-navList
+      li.secondary-navItem
+        a.secondary-navLink href="/hosts"
+          | <i class="icon-group"></i><span>Hosts</span>
+        ul.secondary-subList
+          - for host in all_hosts do
+            li: a.secondary-navLink href="#{ url_for(host) }" 
+              |  #{ host.full_name }
+
+      li.secondary-navItem
+        a.secondary-navLink href="/shows"
+          | <i class="icon-star"></i><span>Shows</span>
+        ul.secondary-subList
+          - for show in all_shows do
+            li: a.secondary-navLink href="#{ url_for(show) }" 
+              |  #{ show.title }
+
+  .secondary-about
+    h3 #{ t 'about' }
+    == markdown settings.description
+
+== slim :"includes/_footer"

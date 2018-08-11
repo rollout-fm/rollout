@@ -1,0 +1,14 @@
+.showCard
+  img.card-cover-image src="#{ show.cover_url }"
+  .card-main
+    / I hate adding this, but I need it to prevent stupid rounding issues in stupid mobile Safari
+    .card-main-wrapper
+      h2.card-title: a href="#{ url_for(show) }"
+        | <span>#{show.name}</span> #{ show.title }
+
+      .description.card
+
+        == render_content(show.content)
+
+        a.moreLink href="#{ url_for(show) }" title="Mehr über #{ show.title } "
+               |  mehr... <i class="icon-circle-arrow-right"></i>

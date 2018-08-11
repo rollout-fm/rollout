@@ -1,0 +1,120 @@
+/*
+podding - stylesheet for basics
+*/
+
+html {
+  font-family: @textFonts;
+  font-size: @base-size;
+  line-height: @line;
+}
+
+body {
+  background-color: @bg;
+  // background-image: url('images/grid.png'); // OCD Mode ON
+  color: @text; 
+}
+
+a {
+  text-decoration: none;
+  color: @highlight;
+  border-bottom: 1px solid @sub;
+  .candy-trans;
+  &:hover {
+    color: @highlight2;
+    border-color: @highlight2;
+    cursor: pointer;
+    
+  }
+  &:active {
+    color: @highlight;
+  }
+  &:focus {
+    outline: dotted;
+  }
+}
+
+.text-content {
+    a:visited {
+      color: @highlight2;
+    }
+  }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: @displayFonts;
+}
+
+h1 {
+  margin: 0;
+  font-size: 5*@base-size;
+  line-height: 3*@line;
+  font-weight: 500;
+
+  @media (max-width: @break2) {
+    font-size: 3*@base-size;
+    line-height: 2*@line;
+  }
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.4*@base-size;
+  line-height: 1.5*@line;
+  font-weight: 800;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.1*@base-size;
+  line-height: @line;
+  font-weight: 600;
+}
+
+h4,h5,h6 {
+  font-size: 1*@base-size;
+  line-height: @line;
+  font-weight: 500;
+}
+
+.text-content h3, .text-content-long h3 {
+  margin: @line auto @line 20px;
+}
+
+p {
+  margin: 0;
+}
+
+.text-content { // give this class to anything that contains long-form text
+  p { // properly indent paragraphs
+    text-indent: 1em;
+    margin-bottom: @line;
+    &:first-child {
+      text-indent: 0;
+    }
+  }
+
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -o-hyphens: auto;
+  hyphens: auto;
+
+  h3 + p {
+    text-indent: 0;
+  }
+}
+
+p { // we're just wildly assuming than anything in p tags is text. that is usually a good guess.
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -o-hyphens: auto;
+  hyphens: auto;
+}
+
+.text-content-long { // longer text wider than about 40 chars per line becomes uncomfortable to read
+  .text-content;
+  max-width: 600px; 
+}
+
+
+  

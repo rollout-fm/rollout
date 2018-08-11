@@ -1,0 +1,160 @@
+/*
+  Stylesheet for generic objects that can be extended where needed
+*/
+
+
+/* Popovers! */
+  // the base class for popovers, this can be used directly or subclassed
+  // current sub-classes: popover-menu
+  // this is a bit of black magic, I know, I don't enjoy looking at it
+  .popover { 
+    position: relative;
+    height: @line;
+    display: inline-block;
+    vertical-align: baseline;
+    zoom: 1;
+    *display: inline;
+    *vertical-align: auto;
+    &:hover ul, &:hover span {
+      visibility: visible;
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .popover-content {
+      position: absolute;
+      width: 100%;
+      min-width: 10em;
+      visibility: hidden; // comment this line for debugging
+      opacity: 0; // comment this line for debugging
+      position: absolute;
+      top: 0.5*@line;
+      left: 0;
+      right: 0;
+      .bordered;
+      border: 1px solid @highlight;
+      padding: 0.25*@line;
+      -webkit-transition-property: opacity, visibility;
+      -moz-transition-property: opacity, visibility;
+      -ms-transition-property: opacity, visibility;
+      -o-transition-property: opacity, visibility;
+      transition-property: opacity, visibility;
+      -webkit-transition: 0.3s ease-out;
+      -moz-transition: 0.3s ease-out;
+      -ms-transition: 0.3s ease-out;
+      -o-transition: 0.3s ease-out;
+      transition: 0.3s ease-out;
+      background-color: @bg;
+      list-style: none;
+      color: @text;
+      text-align: center;
+      a {
+        .hide-link-less;
+      }
+      &:before, &:after {
+        display: block;
+        content: '';
+        width: 0;
+        height: 0;
+        position: absolute;
+        left: 15px;
+        border: 8px outset transparent;
+      }
+      &:before { // white triangle to "cut out" the arrow
+        border-bottom: 8px solid @highlight;
+        top: -15px;
+        left: 15px;
+      }
+      &:after {
+        border-bottom: 8px solid @bg; // creates a red triangle
+        top: -14px;
+        left: 15px;
+      }
+
+    }
+
+    span.popover-content {
+      top: 1.2*@line;
+    }
+  }
+  
+/* Cards */
+  // This is the object I don't quite have a name for yet. It is used in hosts and shows.
+  
+  .card {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin-bottom: @line;
+  }
+
+  .card-cover-image {
+    float: left;
+    width: 25%;
+    margin: 0;
+    
+    @media all and (max-width: @break2)   {
+      width: 100%;
+    }
+
+    @media (min-width: @break2) {
+      .starkBoxShadow;
+    }
+  }
+
+  .card-main {
+    float: right;
+    width: 70%;
+    padding-bottom: @line;
+
+    @media all and (max-width: @break2)   {
+      width: 100%;
+      padding: 0;
+      padding-bottom: 2*@line;
+    }
+  }
+
+  .card-main-wrapper {
+    @media all and (max-width: @break2)   {
+      width: 100%;
+      padding: 0.5*@line 0 0.5*@line 0;
+      background: @bg;
+    }
+  }
+
+  .card-secondary {
+    margin-top: @line;
+    background: @bg;
+    clear: both;
+    float: left;
+    width: 100%;
+  }
+
+/* Buttons */
+
+  button, .button {
+    .candy-trans;
+  
+    border: 0;
+    padding: 0.5*@line 2*@base-size;
+    color: @bg;
+    background-color: @highlight;
+    font-family: @supportFonts;
+
+    &:hover {
+      background-color: @highlight2;
+    }
+
+    &:active { // simulate pressing the button. kind of.
+      @media (min-width: @break2) {
+        position: relative;
+        top: 3px;
+        left: 3px;
+        .noBoxShadow;
+      }
+    }
+
+    @media (min-width: @break2) {
+      .starkBoxShadow;
+    }
+  }

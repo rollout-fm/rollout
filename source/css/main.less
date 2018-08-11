@@ -1,0 +1,946 @@
+/*
+podding - stylesheet for generic objects (lol)
+*/
+
+/* General Styles */
+
+  .title {
+    a {
+      .hide-link;
+      color: @highlight;
+    }
+  }
+
+  /* Different kinds of titles */
+
+    .quip { // use this in a span in headers etc.
+      .em-dashed;
+      font-style: italic;
+      color: @text-less;
+    }
+
+    .title-label { // this as well
+      font-weight: 500;
+      .with-colon;
+    }
+
+    .sectionHeading {
+      margin: 2*@line auto @line auto;
+      text-align: center;
+      border-bottom: 1px solid @sub;
+      font-size: 1.5*@base-size;
+      line-height: 2*@line;
+      font-weight: 600;
+    }
+
+
+  .moreLink {
+    .textLink;
+    .sized;
+    margin-right: 1em;
+    font-family: @supportFonts;
+
+    @media all and (max-width: @break3)   {
+        float: right;
+        width: 50%;
+        margin: 0;
+        text-align: right;
+    }
+  }
+
+/* Header */
+  /* Site Header */
+
+    #site-title {
+      text-align: center;
+      margin-top: @line;
+      a {
+        color: @text;
+        .hide-link;
+      }
+    }
+
+    #tagline {
+      font-size: 1.3*@base-size;
+      line-height: 2*@line;
+      font-style: italic;
+    }
+
+  /* Main Navigation */
+
+    #mainNav {
+      width: 100%;
+      height: 100%;
+      float: left; // needed for box model
+      margin: @line 0;
+      background-color: @highlight;
+      font-family: @supportFonts;
+      text-align: center;
+
+      @media (max-width: @break2){
+        font-size: 0.9*@base-size;
+        width: 100%;
+        margin: @line 0;
+      }
+
+      @media (min-width: @break2) {
+        .starkBoxShadow;
+      }
+
+      @media (max-width: @break2) {
+        background: transparent;
+        border-bottom: 6px solid @highlight;
+        padding-bottom: 0.5*@line;
+      }
+    }
+
+    #mainNav-navList {
+      display: block;
+      float: left;
+      width: 95%;
+      height: @line;
+      margin: 0 2.5%;
+      padding: 0.5*@line 0;
+      list-style: none;
+    }
+
+    .mainNav-navItem { // these are the <li>s that contain navigation items
+      display: inline;
+      margin-right: 0.6em;
+      padding: 0;
+      font-weight: 300;
+      line-height: @line; 
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      @media (min-width: @break1) {
+        margin-right: 0.8em;
+      }
+
+      @media (min-width: @break2) {
+        font-size: 1.1*@base-size;
+      }
+
+      @media (max-width: @break2) {
+        margin: 0;
+        padding: 0;
+        font-size: 1*@base-size;
+        .dotted; // this adds the spacer dots
+      }
+    }
+
+    .mainNav-navLink {
+      .basicLink-alt;
+      .spaced;
+      border: none;
+      color: @bg;
+
+      &:hover {
+        color: @text;
+      }
+
+      @media (max-width: @break2) {
+        color: @text;
+        font-style: italic;
+
+        &:hover {
+          border-bottom: 1px solid @sub;
+          color: @highlight2;
+        }
+      }
+
+    }
+
+    .popover-menu {
+      .popover;
+      .popover-content {
+        top: 49px;
+        left: -14px;
+        height: auto;
+        text-align: left;
+        li {
+          display: block;
+          margin: 0;
+          padding-left: 0.5em;
+          a {
+            .hide-link-hardcore;
+          }
+        }
+      }
+    }
+
+/* Secondary */
+
+  /* Search */
+
+  #search {
+    width: 100%;
+    margin-bottom: 2*@line;
+    font-family: @supportFonts;
+    input {
+      width: 92.9%; // this has to be carefully chosen to compensate for border and padding
+
+      @media (max-width: @break2) {
+        width: 89.8%; // this has to be carefully chosen to compensate for border and padding
+      }
+    }
+
+    fieldset { // reset stupid defaults
+      margin: 0;
+      border: 0;
+      padding: 0;
+    }
+  }
+
+  /* Secondary Navigation */
+
+    #secondary {
+      border-top: 6px solid @highlight;
+      padding-top: @line;
+    }
+
+    .secondary-about {
+      overflow: hidden;
+      float: right;
+      width: 47.5%;
+
+      @media (max-width: @break2) {
+        width: 100%;
+      }
+    }
+
+    .secondary-nav {
+      overflow: hidden;
+      float: left;
+      width: 47.5%;
+      font-family: @supportFonts;
+
+      @media (max-width: @break2) {
+        width: 100%;
+        margin-bottom: @line;
+      }
+    }
+
+    .secondary-navList {
+      float: left;
+      width: 42.5%;
+      margin-right: 15%;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+    }
+
+    .secondary-navList, .secondary-navList ul {
+      list-style: none;
+    }
+
+    .secondary-navLink {
+      .spaced;
+      .hide-link;
+      color: @text-less;
+    }
+
+    .secondary-subList {
+      padding-left: 0.5em;
+    }
+
+    .secondary-subList > li { // style for the second list level
+      &:before {
+        content: "– ";
+      }
+    }
+
+/* Footer */
+
+  #footer {
+    margin-top: @line;
+    border-top: 6px solid @highlight;
+    padding-bottom: @line;
+    font-size: 0.8*@base-size;
+    color: @text-less;
+
+    @media (min-width: @break2) {
+      border: 0;
+    }
+
+    a {
+
+    }
+  }
+
+/* Episodes */
+
+  /* Episode player */
+
+    .episode-player {
+      clear: both;
+      margin: 0 auto;
+    }
+
+  /* Common Episode Styles (used in more than one mode) */
+    .episode { // class shared by short & full
+      width: 100%;
+      padding-bottom: @line;
+      margin-bottom: @line;
+    }
+
+    .episode-content { // class shared by short & full
+      float: left;
+      width: 100%;
+    }
+
+    /* Episode Header for short & full */
+
+      .episode-header {
+        margin-bottom: 0.5*@line;
+      }
+
+      .episode-heading { // episode number & title
+        font-size: 1.6*@base-size;
+        line-height: 1.5*@line;
+        font-weight: 800;
+
+        @media all and (max-width: @break2)   {
+          line-height: @line;
+          font-size: 1.4*@base-size;
+        }
+
+        @media all and (max-width: @break3)   {
+          font-size: 1.1*@base-size;
+        }
+      }
+
+      .episode-header-spacer {
+        .spacer;
+        font-weight: 400;
+      }
+
+      .episode-episodeNumber {
+        margin-right: 0.5em;
+        .hide-link;
+        font-weight: 300;
+      }
+
+      .episodeNumber-number { // lol NUMBER NUMBER WHAT WHAT
+        margin-left: 0.2em;
+        font-weight: 600;
+        font-size: 0.75em; // because Helvetica doesn't have lining figures
+        text-transform: uppercase;
+      }
+
+      .episodeNumber-showName {
+        font-size: 0.75em;
+      }
+
+      .episode-metaInfo {
+        margin-top: 0.5*@line;
+        font-family: @supportFonts;
+        font-size: @base-size;
+        font-weight: 500;
+
+        @media all and (max-width: @break3)   {
+          margin-top: 0;
+          font-size: @base-size;
+        }
+
+        .episode-hostsList {
+          a {
+            margin: 0;
+            .itemized;
+            .hide-spacers;
+          }
+        }
+
+        .comments-number {
+          white-space: nowrap;
+        }
+      }
+
+  /* Full Episode (as in single page full-on awesome) */
+
+    .fullEpisode { // single episode on a page
+      margin-top: @line;
+    }
+
+    .fullEpisode .episode-header {
+      margin-bottom: @line;
+    }
+
+    .fullEpisode .episode-heading { // it seems not necessary to make this a different class at this point
+      font-size: 2*@base-size;
+
+      @media all and (max-width: @break2)   {
+        font-size: 1.5*@base-size;
+      }
+
+      @media all and (max-width: @break3)   {
+        font-size: 1.2*@base-size;
+      }
+    }
+
+    .fullEpisode-teaser {
+      width: 80%;
+      float: left;
+      font-weight: 600;
+      @media (max-width: @break2) {
+        clear: both;
+        width: 100%;
+      }
+    }
+
+    .fullEpisode-secondary {
+      width: 15%;
+      margin-left: @line;
+      float: left;
+
+      @media (max-width: @break1) {
+        font-size: 0.8*@base-size;
+      }
+
+      @media (max-width: @break2) {
+        width: 100%;
+        margin: 0;
+        font-size: 1*@base-size;
+      }
+
+      h3 {
+        margin: 0;
+        @media (max-width: @break2) {
+          .hidden;
+        }
+      }
+    }
+
+    .fullEpisode-downloadLinks {
+        float: left;
+        width: 100%;
+        padding: 0;
+        font-family: @supportFonts;
+        list-style: none;
+
+        @media (max-width: @break2) {
+          text-align: center;
+          .inline-list;
+        }
+
+      }
+
+    .fullEpisode-downloadLink { // extend download link style for for episodes in full mode
+        .textLink;
+        .spaced;
+        float: none;
+        color: @text-less;
+        text-transform: uppercase;
+
+        @media (max-width: @break2) {
+          margin-left: 1em;
+        }
+      }
+
+    .shownotes {
+      margin-top: @line;
+
+      ul {
+        padding-left: 1em;
+        list-style: none;
+      }
+
+      li > ul {
+        padding: 0;
+      }
+
+      li {
+        margin: 0;
+        padding: 0;
+
+        li {
+          padding-left: 1em;
+        }
+      }
+
+      li:before {
+        content: "– ";
+      }
+
+      li li:before {
+        content: "∙ ";
+      }
+    }
+
+  /* Short Episode (mostly the same as full, but without the shownotes & stuff */
+
+    .shortEpisode-downloadLinks { // these are displayed in short mode when rendering an episode
+      margin-right: 20%;
+
+      @media all and (max-width: @break3)   {
+        float: left;
+        width: 50%;
+        margin: 0;
+      }
+    }
+
+    .shortEpisode-downloadLink {
+      .textLink;
+      .sized;
+      margin-right: 1em;
+      font-family: @supportFonts;
+      color: @text-even-less;
+
+      @media all and (max-width: @break3)   {
+        float: left;
+        width: 50%;
+        margin: 0;
+        text-align: left;
+      }
+    }
+
+  /* Archive Episodes */
+
+    .episodeArchive {
+      font-size: 1.2*@base-size;
+      line-height: 1.5*@line;
+      @media (max-width: @break2) {
+        float: left;
+        width: 100%;
+        margin-bottom: @line;
+        font-size: @base-size;
+        line-height: @line;
+        text-align: center;
+      }
+    }
+
+    .episodeArchive-date {
+      float: left;
+      width: 6em;
+      margin-right: 1em;
+
+      color: @text-less;
+      font-family: @displayFonts;
+      font-size: 0.9*@base-size;
+
+      @media (max-width: @break2) {
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+
+    .episodeArchive-heading {
+      font-family: @displayFonts;
+
+      @media (max-width: @break2) {
+        float: left;
+        width: 100%;
+      }
+    }
+
+    .episodeArchive-episodeNumber {
+      .episode-episodeNumber;
+    }
+
+    .episodeArchive-spacer {
+      .spacer;
+      font-size: @base-size;
+    }
+
+    .episodeArchive-hosts {
+      margin-left: 0.3em;
+      font-size: @base-size;
+
+      .host-link {
+        .hide-link;
+        .itemized;
+        .hide-spacers;
+      }
+
+      @media (max-width: @break2) {
+        float: left;
+        width: 100%;
+      }
+    }
+
+  /* Mini Episodes */
+
+    .episodeMini { // used in planned episodes for example
+      font-family: @supportFonts;
+    }
+
+
+    .episodeMini-episodeNumber {
+      .title-label;
+    }
+
+/* Episode Lists */
+
+  /* Base Styles */
+
+  .episodeList {
+    width: 100%;
+    float: left;
+
+    .episode {
+      float: left; // mostly for box model reasons
+    }
+
+    @media all and (max-width: @break2)   {
+      padding-top: @line;
+    }
+  }
+
+  .episodeList-heading {
+      float: left;
+      margin-right: 1em;
+      font-family: @supportFonts;
+      font-size: @base-size;
+      line-height: @line;
+      font-weight: normal;
+      @media all and (max-width: @break2)   {
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+        margin-bottom: @line;
+      }
+    }
+
+  .episodeList-heading-icon {
+    font-size: 1.25*@base-size;
+    margin-right: 0.3em;
+  }
+
+  /* Episode List Short (as used on index) */
+
+    .episodeListPage .episodeListShort {
+      margin-top: 2*@line;
+
+      @media (max-width: @break2) {
+        margin-top: @line;
+      }
+    }
+
+    .episodeListShort-heading {
+      .episodeList-heading; // extends
+
+      @media (min-width: @break2) {
+       .hidden;
+      }
+    }
+
+
+    .episodeListShort-heading-icon {
+      .episodeList-heading-icon; // extends
+    }
+
+    .episodeListShort {
+      .episode--published {
+        border-bottom: 1px solid @sub;
+
+        &:last-of-type {
+          border: none;
+        }
+      }
+    }
+
+  /* Episode List Archive */
+
+    .episodeListArchive {
+      margin-top: 0;
+      padding: 0;
+    }
+
+    .episodeListArchive-heading {
+      .sectionHeading; // extends
+      margin-top: @line;
+
+      @media (max-width: @break2) {
+        margin-top: 0;
+      }
+    }
+
+  /* Episode List Mini */
+
+    .episodeListMini-wrapper {
+      float: left;
+    }
+
+    .episodeListMini {
+      float: left;
+      padding: 0;
+      .inline-list;
+
+      @media all and (max-width: @break2)   {
+        margin-left: 0;
+      }
+
+      li {
+        float: left;
+        margin-right: 0.1em;
+        font-size: 1.1*@base-size;
+        font-weight: 500;
+        @media all and (max-width: @break2)   {
+          font-size: @base-size;
+          font-weight: 300;
+        }
+      }
+    }
+
+    .episodeListMini-heading {
+      .episodeList-heading; // extends
+    }
+
+    .episodeListMini-heading-text {
+        @media (min-width: @break2) {
+          .hidden;
+        }
+      }
+
+    .episodeListMini-heading-icon {
+      .episodeList-heading-icon; // extends
+    }
+
+    .episodeListMini-moreLink {
+      .inlineIcon;
+
+      padding-left: 0.2*@base-size;
+      color: @text-even-less;
+      font-family: @supportFonts;
+
+    }
+
+
+    .episodeMini {
+
+        &:after {
+          content: " / ";
+          color: @text-less;
+          font-weight: 800;
+        }
+
+        a {
+          color: @highlight-less;
+          span { color: @text-less;}
+          &:hover {
+            color: @highlight2;
+          }
+        }
+
+        &:last-child {
+          &:after {
+            content: "";
+          }
+        }
+      }
+
+/* Shows */
+
+  .showCard {
+    .card;
+    .card-title {
+        span {
+          text-transform: uppercase;
+          font-variant: small-caps;
+          color: @text-less;
+          font-size: 0.6em;
+        }
+      }
+
+    .episodeListContainer {
+      width: 100%;
+    }
+  }
+
+/* Hosts */
+
+  .hostCard {
+    .card;
+    .card-title {
+      margin: 0;
+      span {
+        .em-dashed;
+        font-style: italic;
+        color: @text-less;
+      }
+    }
+
+    .social-links {
+      margin: 0;
+      padding: 0;
+      font-family: @supportFonts;
+      .inline-list;
+      li {
+        .dotted;
+        a {
+          .hide-link;
+        }
+      }
+    }
+
+    .description {
+        margin-top: @line;
+    }
+
+  }
+
+/* Content area decoration */
+
+  #pagination-links {
+    height: @line;
+    margin-bottom: 2*@line;
+    color: @text-less;
+    font-family: @supportFonts;
+  }
+
+  .pagination-linkOlder {
+      .inlineIcon;
+      .sized;
+      .basicLink;
+
+      width: 47.5%;
+      float: left;
+    }
+
+    .pagination-linkNewer {
+      .inlineIcon;
+      .sized;
+      .basicLink;
+
+      width: 47.5%;
+      float: right;
+      text-align: right;
+    }
+
+/* Styling for .pages */
+
+  .page {
+    margin-top: @line;
+  }
+
+  .page-title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: @line;
+
+    a {
+      .hide-link;
+    }
+
+    span.quip {
+      font-size: 1.2*@base-size;
+    }
+  }
+
+/* Forms */
+
+  input, textarea { // establish some baseline
+    border: 1px solid @sub;
+    padding: 0.25*@line 2%;
+    line-height: @line;
+    &:focus {
+      border: 1px solid @text;
+      outline: none;
+    }
+  }
+
+  .input-icon {
+    position: relative;
+    left: 2%;
+    top: 1.3*@line;
+  }
+
+  .input-icon + textarea, .input-icon + input { // if an input is width-sensitive, you have to compensate for this padding
+    padding-left: 5%;
+
+    @media (max-width: @break2) {
+      padding-left: 8%;
+    }
+  }
+
+  form.multiple { // style forms with labels and multiple fields & stuff (feedback form!)
+    float: left;
+    width: 100%;
+    margin-top: @line;
+    padding: 0;
+
+    ol { // input elements are placed in an ol because it makes sense semantically
+      float: left;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    li { // contains label & input
+      clear: both;
+      float: left;
+      width: 100%;
+      list-style: none;
+    }
+
+    label { // icon + short description
+      float: left;
+      height: 100%;
+      width: 30%;
+      text-align: left;
+    }
+
+    input, textarea {
+      float: right;
+      width: 60%;
+      margin-top: -0.25*@line; // needed for lining up the fields with their labels
+      margin-bottom: 0.75*@line;
+
+    }
+
+    @media all and (max-width: @break2)   { // on small screens, labels and inputs stack
+
+      label, input, textarea, button, .support-text {
+        clear: both;
+        float: left;
+        width: 96%;
+      }
+
+      input, textarea {
+        margin: 0.5*@line auto @line auto; // leave some space for the padding
+      }
+
+      label, .form-note {
+        text-align: center;
+      }
+
+      button {
+        width: 100%;
+        float: left;
+        margin-bottom: @line;
+      }
+    }
+  }
+
+  .support-text { // short text if a field need further instructions
+    clear: both;
+    width: 100%;
+    color: @text-less;
+    font-size: 0.8*@base-size;
+  }
+
+  .form-note { // explains which fields are required etc.
+    margin-top: @line;
+    margin-bottom: @line;
+    color: @text-less;
+    font-size: 0.9*@base-size;
+    line-height: @line;
+    font-style: italic;
+  }
+
+/* Icons */
+
+// Correct the alignment of some icons (it's driving me nuts)
+
+a {
+  .icon-long-arrow-right, .icon-long-arrow-left {
+    position: relative;
+    top: -0.1em;
+  }
+}
+
+
