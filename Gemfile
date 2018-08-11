@@ -37,6 +37,3 @@ end
 
 gem 'i18n'
 
-# CLI
-
-gem 'thor'
