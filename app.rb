@@ -29,7 +29,7 @@ class Podding < Sinatra::Base
   enable :sessions, :static, :logging
 
   source_dir = File.dirname(__FILE__) + '/source'
-  config_file "#{ source_dir }/config.yaml"
+  config_file "#{ source_dir }/config.yml"
 
   set :root, File.dirname(__FILE__)
   register Sinatra::AssetPack
