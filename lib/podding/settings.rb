@@ -3,6 +3,6 @@
 require 'settingslogic'
 
 class Settings < Settingslogic
-  source "#{File.dirname(__FILE__)}/../../source/config.yaml"
+  source "#{File.dirname(__FILE__)}/../../source/config.yml"
   load!
 end
