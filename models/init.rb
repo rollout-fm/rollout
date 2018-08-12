@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 Dir[File.dirname(__FILE__) + "/*.rb"].each do |model|
   if model != __FILE__

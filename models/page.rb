@@ -1,7 +1,6 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 class Page < Mlk::Model
-
   attribute :title
   attribute :icon
   attribute :label
@@ -11,6 +10,5 @@ class Page < Mlk::Model
   attribute :is_hidden
   attribute :is_special
   attribute :short_title
-
 end
 
