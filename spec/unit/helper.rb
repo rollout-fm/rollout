@@ -2,9 +2,6 @@
 
 require 'minitest/spec'
 require 'minitest/autorun'
-require 'mocha/setup'
-
-require 'ostruct'
 
 require 'pry'
 require 'pry-byebug'
@@ -33,11 +30,10 @@ def generate_document(header, content = '')
 EOF
 end
 
-def mock_with_attributes(attributes)
-  mock_obj = mock
-  attributes.each do |attr, value|
-    mock_obj.expects(attr).returns(value)
-  end
+Document = Struct.new(:content, :data) do
 
-  mock_obj
+end
+
+def mock_with_attributes(attributes)
+  Document.new(attributes[:content], attributes[:data])
 end

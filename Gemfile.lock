@@ -22,7 +22,6 @@ GEM
     ffi (1.9.25)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
-    jsmin (1.0.1)
     json (2.1.0)
     less (2.6.0)
       commonjs (~> 0.2.7)
@@ -31,11 +30,8 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
-    mail (2.7.0)
-      mini_mime (>= 0.1.1)
     metaclass (0.0.4)
     method_source (0.9.0)
-    mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     minitest-spec (0.0.2.1)
@@ -46,8 +42,6 @@ GEM
     mustermann (1.0.2)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
-    pony (1.12)
-      mail (>= 2.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -58,8 +52,6 @@ GEM
     rack (2.0.5)
     rack-protection (2.0.3)
       rack
-    rack-test (1.1.0)
-      rack (>= 1.0, < 3)
     rake (12.3.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
@@ -76,11 +68,6 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.3)
       tilt (~> 2.0)
-    sinatra-assetpack (0.3.1)
-      jsmin
-      rack-test
-      sinatra
-      tilt (>= 1.3.0)
     sinatra-contrib (2.0.3)
       activesupport (>= 4.0.0)
       backports (>= 2.8.2)
@@ -115,7 +102,6 @@ DEPENDENCIES
   minitest-spec
   mlk!
   mocha
-  pony
   pry
   pry-byebug
   puma
@@ -125,7 +111,6 @@ DEPENDENCIES
   rerun
   settingslogic
   sinatra
-  sinatra-assetpack
   sinatra-contrib
   slim
   therubyracer

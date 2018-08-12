@@ -46,24 +46,18 @@ describe TextFilterEngineBase do
   end
 
   describe '#render' do
-
     it 'should instantiate all registered filters' do
-      options = { :foo => 'bar' }
+      filter = Class.new(TextFilter)
 
-      3.times do
-        filter = Class.new(TextFilter)
-        filter_instance = TextFilter.new(options)
-        filter_instance.expects(:render).with('foo').returns('foo')
-        filter.expects(:new).with(options).returns(filter_instance)
+      filter_instance = MiniTest::Mock.new
+      filter_instance.expect(:render, 'foo', ['foo'])
 
+      filter.stub(:new, filter_instance) do
         engine.register_filter(filter)
+        engine.render('foo', { :foo => 'bar' })
       end
-
-      engine.render('foo', options)
     end
-
   end
-
 end
 
 
