@@ -79,7 +79,7 @@ class Episode < Mlk::Model
   end
 
   def content
-    @content || document.content
+    @content ||= document.content
   end
 
   private
