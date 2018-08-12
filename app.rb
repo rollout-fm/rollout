@@ -8,7 +8,6 @@ end
 
 require 'bundler/setup'
 require 'sinatra/base'
-require 'sinatra/assetpack'
 require 'sinatra/config_file'
 require 'slim'
 require 'less'
@@ -28,14 +27,13 @@ class Podding < Sinatra::Base
 
   enable :sessions, :static, :logging
 
-  source_dir = File.dirname(__FILE__) + '/source'
-  config_file "#{source_dir}/config.yml"
+  root_dir = File.dirname(__FILE__)
+  source_dir = "#{root_dir}/source"
+  config_file "#{root_dir}/config.yml"
 
-  set :root, File.dirname(__FILE__)
-  register Sinatra::AssetPack
-
-  set :public_folder, source_dir + '/assets'
-  set :views, source_dir + '/templates'
+  set :root, root_dir
+  set :public_folder, root_dir + '/static'
+  set :views, root_dir + '/views'
 
   Mlk::FileStorage.base_path = source_dir
   Mlk::Model.storage_engine = Mlk::FileStorage
@@ -59,17 +57,15 @@ class Podding < Sinatra::Base
   require_relative 'helpers/init'
   require_relative 'filters/init'
 
-  Less.paths << source_dir + "/css"
-
-  assets do
-    # serve '/js',     from: 'source/javascript'
-    serve '/css',    from: 'source/css'
-    serve '/images', from: 'source/assets/images'
+  get '/css/:style.css' do
+    pp params
+    less params[:style].to_sym, :paths => [settings.views + "/css"]
   end
 
-  # Configure localisation
+  # Configure localization
 
   I18n.load_path += Dir[File.join(source_dir, 'locales', '*.yml').to_s]
+
   if Settings["language"]
     I18n.locale = Settings.language
   else
