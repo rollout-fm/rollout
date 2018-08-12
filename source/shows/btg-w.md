@@ -1,7 +1,7 @@
 ---
-name: pp
-title: "Pilotenprüfung"
-author: "Ratinacast Crew"
+name: bgt-w
+title: "Binärgewitter: Westcoast Edition"
+author: "Rollout Crew"
 cover_url: "http://placekitten.com/300/300"
 audioformats: [mp3, aac, opus]
 ---
