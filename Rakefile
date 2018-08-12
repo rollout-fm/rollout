@@ -34,12 +34,12 @@ end
 Rake::TestTask.new do |t|
   t.name = 'integration'
   t.pattern = 'spec/integration/**/test_*.rb'
-  t.verbose = true
+  t.verbose = false
 end
 
 Rake::TestTask.new do |t|
   t.name = 'unit'
   t.pattern = 'spec/unit/**/test_*.rb'
-  t.verbose = true
+  t.verbose = false
 end
 
